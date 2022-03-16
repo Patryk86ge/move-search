@@ -1,0 +1,100 @@
+.section__boxMove {
+    min-height: 100vh;
+    background-color: black;
+}
+.container {
+    display: grid;
+    gap: 45px;
+    grid-template-columns: 1fr 1fr 1fr ;
+
+}
+.section__nav{
+    height: 150px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.nav__nag{
+    margin: 0 0 0 50px;
+    padding-left: 250px;
+    color: white;
+}
+input {
+
+    min-width: 350px;
+    height: 30px;
+    margin: 0 0 0 60px;
+}
+footer {
+    height: 50px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-top: 1px solid white;
+
+}
+h2, h1 {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.boxMove__nag {
+    height: 500px;
+    margin-bottom: 20px;
+}
+.boxMove__hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero__text  {
+    width: 1000px;
+    padding-left: 10px;
+    color: white;
+
+}
+.hero__nag{
+    padding:50px 0 0 20px;
+    color: white;
+}
+.boxMove__move{
+    padding-bottom: 20px;
+}
+img {
+    width: 100%;
+}
+.box__move {
+    color: white;
+    cursor: pointer;
+    transition-duration: 3s;
+    position: relative;
+
+
+}
+.box__move:hover {
+   transform:  scale(1.05);
+}
+.btn__move {
+    margin-left: 10px;
+}
+.modalMove__box {
+    display: flex;
+    justify-content: flex-start;
+}
+.modalMove__viev {
+    margin-left:20px;
+}
+.modalBox {
+position: absolute;
+    bottom: 0;
+    left: 0;
+}

@@ -28,10 +28,10 @@ const ModalMove = ({movie}) => {
           <div className={"modalMove__box"}>
             <div className="modalMove__img">
               <img
-                src={movie.Poster}
+                src={movie.image}
                 alt={'postar'}
                 onError={(e) => {
-                  if (e.target.src !== `${movie.Poster}`) {
+                  if (e.target.src !== `${movie.image}`) {
                     e.target.src = `${imgDefault}`;
                   }
                 }
@@ -39,8 +39,8 @@ const ModalMove = ({movie}) => {
               />
             </div>
             <div className="modalMove__viev">
-            <p>Type: {movie.Type}</p>
-            <p>Year: {movie.Year}</p>
+              {/*<p>Type: {movie.Type}</p>*/}
+              <p>Description: {movie.description}</p>
             </div>
           </div>
         </Modal.Body>

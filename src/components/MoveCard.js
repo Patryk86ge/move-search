@@ -9,18 +9,18 @@ const MoveCard = ({movie}) => {
     <>
       <div className={"box__move"}>
         <img
-          src={movie.Poster}
+          src={movie.image}
           alt={'postar'}
           onError={(e) => {
-            if (e.target.src !== `${movie.Poster}`) {
+            if (e.target.src !== `${movie.image}`) {
               e.target.src = `${imgDefault}`;
             }
           }
           }
         />
-        <h1>{movie.Title}</h1>
+        <h1>{movie.title}</h1>
         <p>{movie.Type}</p>
-        <p style={{marginBottom:"50px"}}>{movie.Year}</p>
+        <p style={{marginBottom:"50px"}}>{movie.description}</p>
         <div className={"modalBox"}>
           <ModalStars movie={movie}/>
           <ModalMove movie={movie}/>

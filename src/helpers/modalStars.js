@@ -7,10 +7,8 @@ const ModalStars = ({movie}) => {
   const [show, setShow] = useState(false);
   const [sum, setSum] = useState([0]);
 
-  const tab = [];
   const ratingChanged = (newRating) => {
     setSum(newRating);
-    console.log(sum);
   }
 
   const handleClose = () => setShow(false);
@@ -23,7 +21,7 @@ const ModalStars = ({movie}) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{movie.Title}</Modal.Title>
+          <Modal.Title>{movie.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ReactStars

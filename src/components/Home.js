@@ -8,10 +8,10 @@ const Home = () => {
   const [search, setSearch] = useState('');
 
   const move  = (search) => {
-    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=aaf92fe5&s=${search}`)
+    fetch(`https://imdb-api.com/en/API/Search/k_dpa44bis/${search}`)
       .then(response => response.json())
       .then(data => {
-        const results = data.Search;
+        const results = data.results;
         setMoveImdb(results);
         console.log(results);
       })
@@ -27,7 +27,7 @@ const Home = () => {
   const renderMve = () => (
     moveImdb.map((movie) => (
       <MoveCard
-        key={movie.imdbID}
+        key={movie.id}
         movie={movie}
       />
     ))
@@ -62,17 +62,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-// fetch('api/Sessions', {
-//   method: 'POST',
-//   headers: {
-//     'Accept': 'application/json',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify(callData)
-// })
-//   .then(response => response.text())
-//   .then((response) => updateResponse(response))
-//   .catch(error => console.error(error));
-// }

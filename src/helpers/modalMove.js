@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Button, Modal} from "react-bootstrap";
 import imgDefault from "../asets/no-image.jpg";
+const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
+
 
 const ModalMove = ({movie}) => {
   const values = [true];
@@ -16,7 +18,7 @@ const ModalMove = ({movie}) => {
     <>
       {values.map((v, idx) => (
         <Button key={idx} className="me-2 btn__move" onClick={() => handleShow(v)}>
-          view
+          View
           {typeof v === 'string' && `below ${v.split('-')[0]}`}
         </Button>
       ))}
@@ -28,10 +30,10 @@ const ModalMove = ({movie}) => {
           <div className={"modalMove__box"}>
             <div className="modalMove__img">
               <img
-                src={movie.image}
+                src={IMAGE_PATH + movie.poster_path}
                 alt={'postar'}
                 onError={(e) => {
-                  if (e.target.src !== `${movie.image}`) {
+                  if (e.target.src !== `${IMAGE_PATH + movie.poster_path}`) {
                     e.target.src = `${imgDefault}`;
                   }
                 }
@@ -39,8 +41,10 @@ const ModalMove = ({movie}) => {
               />
             </div>
             <div className="modalMove__viev">
-              {/*<p>Type: {movie.Type}</p>*/}
-              <p>Description: {movie.description}</p>
+              <h1 style={{color:"black"}}>{movie.title}</h1>
+              <p>{movie.Type}</p>
+              <p>{movie.release_date}</p>
+              <p>{movie.overview}</p>
             </div>
           </div>
         </Modal.Body>

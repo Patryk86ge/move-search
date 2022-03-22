@@ -2,22 +2,31 @@ import React, {useEffect, useState} from 'react';
 import Footer from "./Footer";
 import '../asets/home.css';
 import MoveCard from "./MoveCard"
+import axios from "axios";
+
+const URL_API = "https://api.themoviedb.org/3";
+const API_KEY = '87167d50b8a810b20afa0efe36f165d8';
+const BACKDROP_PATH = "https://image.tmdb.org/t/p/original";
 
 const Home = () => {
-  const [moveImdb, setMoveImdb] = useState([]);
-  const [search, setSearch] = useState('');
 
-  const move  = (search) => {
-    fetch(`https://imdb-api.com/en/API/Search/k_dpa44bis/${search}`)
-      .then(response => response.json())
-      .then(data => {
-        const results = data.results;
-        setMoveImdb(results);
-        console.log(results);
-      })
-      .catch(err => {
-        console.error(err);
-      });
+  const [moveImdb, setMoveImdb] = useState([]);
+  const [bgMove,setBgMove] = useState([])
+  const [searchKey, setSearchKey] = useState('');
+
+
+  const move = async (searchKey) => {
+    const type = searchKey ? 'search' : 'discover'
+    const {data: {results}} = await axios.get(`${URL_API}/${type}/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: searchKey
+      }
+    })
+    const randomBg = Math.floor(Math.random() * (results.length - 0 + 1)) + 0;
+    console.log(results);
+    setMoveImdb(results)
+    setBgMove(results[randomBg])
   }
 
   useEffect(() => {
@@ -35,27 +44,31 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    move(search)
+    move(searchKey)
 
   }
   return (
     <>
-      <header className='section__boxMove'>
+      <header className='header'>
         <nav className='section__nav'>
           <form onSubmit={handleSubmit}>
             <h1>Movie Search</h1>
             <input
               type='text'
               placeholder='Search move'
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={searchKey}
+              onChange={(e) => setSearchKey(e.target.value)}
             />
           </form>
         </nav>
-        <section className='container boxMove__move'>
-          {renderMve()}
-        </section>
       </header>
+      <section className={"section__boxMove"} style={{backgroundImage: `url(${BACKDROP_PATH}${bgMove.backdrop_path})`}}>
+        <h1>{bgMove.title}</h1>
+        <p>{bgMove.release_date}</p>
+      </section>
+      <section className='container boxMove__move'>
+        {renderMve()}
+      </section>
       <Footer/>
     </>
   );

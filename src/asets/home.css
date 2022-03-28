@@ -127,3 +127,18 @@ img {
 .modalMove__img {
     width: 400px;
 }
+
+@media (max-width: 1005px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+    }
+}
+@media (max-width: 778px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+}

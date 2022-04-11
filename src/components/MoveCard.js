@@ -1,6 +1,6 @@
 import React from 'react';
-import ModalStars from "../helpers/modalStars";
-import ModalMove from "../helpers/modalMove";
+import ModalStars from "./modalStars";
+import ModalMove from "./modalMove";
 import imgDefault from '../asets/no-image.jpg';
 const IMAGE_PATH = "https://image.tmdb.org/t/p/w342";
 
